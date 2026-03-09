@@ -16,7 +16,6 @@
 * **Serialization:** Joblib (לשמירת המודלים והסקיילר)
 
 ## 📂 מבנה הפרויקט
-```plaintext
 ├── main.py              # שרת ה-API (FastAPI)
 ├── index.html           # ממשק המשתמש (Frontend)
 ├── Project.ipynb        # מחברת מחקר, אימון מודלים והשוואת ביצועים
