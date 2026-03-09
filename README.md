@@ -31,11 +31,13 @@
 יש להריץ את הפקודה הבאה בטרמינל:
 
 Bash
+
 pip install fastapi uvicorn pandas scikit-learn joblib
 2. הרצת השרת
 נווט לתיקיית הפרויקט והרצ:
 
 Bash
+
 python -m uvicorn main:app --reload
 השרת יהיה זמין בכתובת: http://127.0.0.1:8000
 
