@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographix AI | מחקר תוחלת חיים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a2a3a;
+            --accent-green: #2ecc71;
+            --accent-red: #e74c3c;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        body { 
+            font-family: 'Assistant', sans-serif; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; margin: 0; 
+        }
+
+        .container { 
+            background: var(--card-bg); padding: 2.5rem; border-radius: 16px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 450px; 
+            border: 1px solid #e1e8ed; position: relative;
+        }
+
+        .logo-container {
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;
+        }
+
+        .logo-icon { font-size: 2.5rem; color: var(--primary-dark); margin-left: 10px; }
+        .logo-text { text-align: right; }
+        .logo-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin: 0; }
+        .logo-subtitle { font-size: 0.75rem; color: #7f8c8d; margin: 0; text-transform: uppercase; }
+
+        h1 { color: var(--primary-dark); font-size: 1.6rem; margin: 0 0 0.5rem 0; text-align: center; }
+        .subtitle { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 2rem; text-align: center; }
+
+        .input-group { margin-bottom: 1.2rem; text-align: right; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.85rem; color: var(--primary-dark); }
+
+        input, select { 
+            width: 100%; padding: 12px; border: 1.5px solid #dcdde1; border-radius: 8px; 
+            font-size: 1rem; transition: all 0.3s;
+        }
+
+        input:focus { border-color: var(--primary-dark); outline: none; box-shadow: 0 0 0 3px rgba(26, 42, 58, 0.1); }
+
+        .button-group { display: flex; gap: 10px; margin-top: 2rem; }
+        button { 
+            flex: 2; padding: 14px; background: var(--primary-dark); color: white; 
+            border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: 0.3s;
+        }
+        button.secondary { flex: 1; background: transparent; color: var(--primary-dark); border: 1.5px solid var(--primary-dark); }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        #result { 
+            margin-top: 2rem; padding: 20px; border-radius: 12px; display: none; text-align: center;
+            background-color: #f0fff4; border: 1px solid #c3e6cb; animation: fadeIn 0.5s;
+        }
+        #result .number { display: block; font-size: 2.8rem; color: var(--accent-green); font-weight: 800; }
+
+        #info-box { 
+            margin-top: 1.5rem; display: none; background: #fafafa; padding: 15px; 
+            border-radius: 10px; border-right: 4px solid var(--primary-dark); text-align: right;
+        }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 4px; display: flex; justify-content: space-between; }
+        .positive { color: var(--accent-green); font-weight: bold; }
+        .negative { color: var(--accent-red); font-weight: bold; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-container">
+        <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="logo-text">
+            <h2 class="logo-title">DEMO<span style="font-weight: 300;">GRAPHIX</span></h2>
+            <p class="logo-subtitle">Advanced Analytics Institute</p>
+        </div>
+    </div>
+
+    <h1>חיזוי תוחלת חיים</h1>
+    <p class="subtitle">מערכת AI לניתוח מגמות דמוגרפיות</p>
+    
+    <div class="input-group">
+        <label>שנת יעד למחקר</label>
+        <input type="number" id="year" value="2024">
+    </div>
+
+    <div class="input-group">
+        <label>הוצאה ממשלתית (USD)</label>
+        <input type="number" id="spending" value="5000">
+    </div>
+
+    <div class="input-group">
+        <label>מדינת יעד</label>
+        <select id="country">
+            <option value="Japan">יפן 🇯🇵</option>
+            <option value="France">צרפת 🇫🇷</option>
+            <option value="Germany">גרמניה 🇩🇪</option>
+            <option value="USA">ארה"ב 🇺🇸</option>
+            <option value="Great Britain">בריטניה 🇬🇧</option>
+            <option value="Canada">קנדה 🇨🇦</option>
+        </select>
+    </div>
+
+    <div class="button-group">
+        <button onclick="getPrediction()">הפעל חיזוי</button>
+<button class="secondary" onclick="toggleInfo()">איך המודל מחליט?</button>    </div>
+
+    <div id="result">
+        תוחלת החיים החזויה:
+        <span class="number" id="prediction-value">--</span>
+        שנים
+    </div>
+
+    <div id="info-box">
+        <strong>Insights מתוך המודל:</strong>
+        <ul id="importance-list"></ul>
+    </div>
+</div>
+
+<script>
+    async function getPrediction() {
+        const resultDiv = document.getElementById('result');
+        const predSpan = document.getElementById('prediction-value');
+        const data = {
+            Year: parseInt(document.getElementById('year').value),
+            Spending_USD: parseFloat(document.getElementById('spending').value),
+            Country: document.getElementById('country').value
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            predSpan.innerText = result.prediction.toFixed(1);
+            resultDiv.style.display = 'block';
+        } catch (error) { alert('שגיאת תקשורת עם השרת.'); }
+    }
+
+    async function toggleInfo() {
+        const infoBox = document.getElementById('info-box');
+        if (infoBox.style.display === 'block') { infoBox.style.display = 'none'; return; }
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/info');
+            const data = await response.json();
+            let listHtml = "";
+            for (const [feature, value] of Object.entries(data.feature_importance)) {
+                const isPos = value > 0;
+                listHtml += `<li>
+                    <span>${feature}</span>
+                    <span class="${isPos ? 'positive' : 'negative'}">${isPos ? '↑' : '↓'} ${Math.abs(value).toFixed(2)}</span>
+                </li>`;
+            }
+            document.getElementById('importance-list').innerHTML = listHtml;
+            infoBox.style.display = 'block';
+        } catch (error) { alert("לא ניתן לטעון נתוני מודל."); }
+    }
+</script>
+</body>
+</html>
