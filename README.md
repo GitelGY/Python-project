@@ -1,26 +1,22 @@
-🌍 Life Expectancy Prediction System
-מערכת לחיזוי וניתוח תוחלת חיים מבוססת Machine Learning
+# 🌍 Life Expectancy Prediction System
+### מערכת לחיזוי וניתוח תוחלת חיים מבוססת Machine Learning
+
 מערכת Full-Stack המאפשרת לחזות את תוחלת החיים הצפויה במדינות שונות על סמך נתונים כלכליים (הוצאה ממשלתית) וזמן (שנה), כולל ממשק אינטראקטיבי והסברים על החלטות המודל.
 
-🚀 תכונות עיקריות
-חיזוי מדויק: שימוש במודל KNN (K-Nearest Neighbors) שהשיג רמת דיוק גבוהה.
+## 🚀 תכונות עיקריות
+* **חיזוי מדויק:** שימוש במודל KNN (K-Nearest Neighbors) שהשיג רמת דיוק גבוהה.
+* **Explainable AI:** הצגת "מקדמי השפעה" (Coefficients) המראים אילו גורמים העלו או הורידו את התחזית.
+* **API מהיר:** שרת Backend מבוסס FastAPI.
+* **ממשק ידידותי:** דף אינטרנט מעוצב המאפשר הזנת נתונים וקבלת תוצאות מיידיות.
 
-Explainable AI: הצגת "מקדמי השפעה" (Coefficients) המראים אילו גורמים העלו או הורידו את התחזית.
+## 🛠 טכנולוגיות
+* **Data Science:** Python, Pandas, NumPy, Scikit-learn
+* **Backend:** FastAPI, Uvicorn, Pydantic
+* **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
+* **Serialization:** Joblib (לשמירת המודלים והסקיילר)
 
-API מהיר: שרת Backend מבוסס FastAPI.
-
-ממשק ידידותי: דף אינטרנט מעוצב המאפשר הזנת נתונים וקבלת תוצאות מיידיות.
-
-🛠 טכנולוגיות
-Data Science: Python, Pandas, NumPy, Scikit-learn.
-
-Backend: FastAPI, Uvicorn, Pydantic.
-
-Frontend: HTML5, CSS3, JavaScript (Fetch API).
-
-Serialization: Joblib (לשמירת המודלים והסקיילר).
-
-📂 מבנה הפרויקט
+## 📂 מבנה הפרויקט
+```plaintext
 ├── main.py              # שרת ה-API (FastAPI)
 ├── index.html           # ממשק המשתמש (Frontend)
 ├── Project.ipynb        # מחברת מחקר, אימון מודלים והשוואת ביצועים
@@ -29,8 +25,6 @@ Serialization: Joblib (לשמירת המודלים והסקיילר).
 ├── lr_model.pkl         # מודל רגרסיה ליניארית (לצורך הסבר חשיבות משתנים)
 ├── scaler.pkl           # הסקיילר (StandardScaler) לנרמול הנתונים
 └── columns.pkl          # רשימת העמודות מהאימון (לצורך One-Hot Encoding)
-
-
 ⚙️ הוראות הרצה
 1. התקנת ספריות
 יש להריץ את הפקודה הבאה בטרמינל:
